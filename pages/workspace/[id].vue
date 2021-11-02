@@ -22,10 +22,12 @@ export default {
       })
     },
     createCard(column) {
-      column.items.push({
-        id: 123,
-        name: column.newItemName
-      })
+      if (column.newItemName) {
+        column.items.push({
+          id: 123,
+          name: column.newItemName
+        })
+      }
     }
   },
   mounted() {

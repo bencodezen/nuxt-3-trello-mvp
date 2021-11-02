@@ -22,7 +22,11 @@ const createWorkspace = () => {
   <h1>Home Page</h1>
   <h2>Recently Viewed</h2>
   <h2>Workspaces</h2>
-  <input type="text" v-model="newWorkspaceName" />
+  <input
+    type="text"
+    v-model="newWorkspaceName"
+    @keyup.enter="createWorkspace"
+  />
   <button @click="createWorkspace">Create a Workspace</button>
   <ul class="workspace-list">
     <li

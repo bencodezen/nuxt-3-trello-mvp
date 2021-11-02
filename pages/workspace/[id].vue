@@ -10,7 +10,6 @@ export default {
   data: () => ({
     workspaceName: '',
     board: {
-      name: 'Cherries',
       columns: []
     }
   }),
@@ -44,7 +43,6 @@ export default {
   <div>
     <h1>{{ workspaceName }} Workspace (#{{ $route.params.id }})</h1>
     <section>
-      <h2>{{ board.name }}</h2>
       <button @click="createColumn">Create Column</button>
       <div class="column-grid">
         <section class="board-column" v-for="column in board.columns">

@@ -1,13 +1,8 @@
-<script lang="ts" setup>
+<script setup>
 import { ref } from 'vue'
-
-interface Workspace {
-  id: Number
-  name: String
-}
+import { workspaceList } from '../store/global.js'
 
 const newWorkspaceName = ref('')
-const workspaceList = ref<Workspace[]>([])
 const createWorkspace = () => {
   const randomId = Math.floor(Math.random() * 100)
 
@@ -21,24 +16,28 @@ const createWorkspace = () => {
 </script>
 
 <template>
-  <h1>Home Page</h1>
-  <h2>Recently Viewed</h2>
-  <h2>Workspaces</h2>
-  <input
-    type="text"
-    v-model="newWorkspaceName"
-    @keyup.enter="createWorkspace"
-  />
-  <button @click="createWorkspace">Create a Workspace</button>
-  <ul class="workspace-list">
-    <li
-      v-for="workspace in workspaceList"
-      :key="workspace.id"
-      class="workspace-card"
-    >
-      {{ workspace.id }}: {{ workspace.name }}
-    </li>
-  </ul>
+  <div>
+    <h1>Home Page</h1>
+    <h2>Recently Viewed</h2>
+    <h2>Workspaces</h2>
+    <input
+      type="text"
+      v-model="newWorkspaceName"
+      @keyup.enter="createWorkspace"
+    />
+    <button @click="createWorkspace">Create a Workspace</button>
+    <ul class="workspace-list">
+      <li
+        v-for="workspace in workspaceList"
+        :key="workspace.id"
+        class="workspace-card"
+      >
+        <nuxt-link :to="`/workspace/${workspace.id}`"
+          >{{ workspace.id }}: {{ workspace.name }}</nuxt-link
+        >
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style>

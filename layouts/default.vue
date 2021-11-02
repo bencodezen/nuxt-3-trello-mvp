@@ -4,7 +4,6 @@ export default {}
 
 <template>
   <div>
-    <p>Default Layout</p>
     <nav>
       <nuxt-link to="/">Home</nuxt-link>
     </nav>

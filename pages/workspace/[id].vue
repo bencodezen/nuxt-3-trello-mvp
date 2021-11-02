@@ -48,7 +48,11 @@ export default {
       <button @click="createColumn">Create Column</button>
       <div class="column-grid">
         <section class="board-column" v-for="column in board.columns">
-          <input type="text" v-model="column.newItemName" />
+          <input
+            v-model="column.newItemName"
+            @keyup.enter="createCard(column)"
+            type="text"
+          />
           <button @click="createCard(column)">Create Card</button>
           <ul>
             <li v-for="item in column.items" :key="item.id">

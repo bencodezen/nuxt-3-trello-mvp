@@ -27,6 +27,8 @@ export default {
           id: 123,
           name: column.newItemName
         })
+
+        column.newItemName = ''
       }
     }
   },

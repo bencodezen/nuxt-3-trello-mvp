@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
+    "upgrade": "nuxi upgrade",
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {

@@ -11,7 +11,23 @@ export default {
     newColumnName: '',
     workspaceName: '',
     board: {
-      columns: []
+      columns: [
+        {
+          columnName: 'Luffy',
+          newItemName: '',
+          items: []
+        },
+        {
+          columnName: 'Zorro',
+          newItemName: '',
+          items: []
+        },
+        {
+          columnName: 'Nani',
+          newItemName: '',
+          items: []
+        }
+      ]
     }
   }),
   methods: {
@@ -80,7 +96,21 @@ export default {
           </button>
           <ul style="margin: 0; padding: 0">
             <li v-for="item in column.items" :key="item.id" class="base-card">
-              {{ item.name }}
+              <h4 style="margin-top: 0">{{ item.name }}</h4>
+              <select
+                name="luffy-migrate-list"
+                id="luffy-migrate-list"
+                style="padding: 5px; width: 100%; margin-bottom: 10px"
+              >
+                <option
+                  v-for="column in board.columns"
+                  :key="`migrate-${column.columnName}`"
+                  :value="column.columnName"
+                >
+                  {{ column.columnName }}
+                </option>
+              </select>
+              <button>Migrate</button>
             </li>
           </ul>
         </section>

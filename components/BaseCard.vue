@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const props = defineProps({
   data: Object,
@@ -12,6 +12,12 @@ const emits = defineEmits({
 })
 
 const migrateListTarget = ref('')
+
+const filteredMigrateList = computed(() => {
+  return props.migrateList.filter(
+    item => item.columnName !== props.parentColumn
+  )
+})
 
 const migrateCard = () => {
   const targetColumn = migrateListTarget.value
@@ -30,7 +36,6 @@ const migrateCard = () => {
 <template>
   <section class="base-card">
     <h4 style="margin-top: 0">{{ data.name }}</h4>
-    <p>{{ migrateListTarget }}</p>
     <select
       name="luffy-migrate-list"
       id="luffy-migrate-list"
@@ -38,7 +43,7 @@ const migrateCard = () => {
       v-model="migrateListTarget"
     >
       <option
-        v-for="column in migrateList"
+        v-for="column in filteredMigrateList"
         :key="`migrate-${column.columnName}`"
         :value="column.columnName"
       >

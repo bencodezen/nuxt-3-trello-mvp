@@ -15,7 +15,12 @@ export default {
         {
           columnName: 'Luffy',
           newItemName: '',
-          items: []
+          items: [
+            {
+              id: 123,
+              name: 'Rocket Punch'
+            }
+          ]
         },
         {
           columnName: 'Zorro',
@@ -95,22 +100,16 @@ export default {
             Create Card
           </button>
           <ul style="margin: 0; padding: 0">
-            <li v-for="item in column.items" :key="item.id" class="base-card">
-              <h4 style="margin-top: 0">{{ item.name }}</h4>
-              <select
-                name="luffy-migrate-list"
-                id="luffy-migrate-list"
-                style="padding: 5px; width: 100%; margin-bottom: 10px"
-              >
-                <option
-                  v-for="column in board.columns"
-                  :key="`migrate-${column.columnName}`"
-                  :value="column.columnName"
-                >
-                  {{ column.columnName }}
-                </option>
-              </select>
-              <button>Migrate</button>
+            <li
+              v-for="item in column.items"
+              :key="item.id"
+              style="list-style: none"
+            >
+              <BaseCard
+                :data="item"
+                :parentColumn="column.columnName"
+                :migrateList="board.columns"
+              />
             </li>
           </ul>
         </section>
@@ -119,14 +118,7 @@ export default {
   </main>
 </template>
 
-<style>
-.base-card {
-  border: 1px solid #222;
-  padding: 10px;
-  list-style: none;
-  background-color: #fff;
-}
-
+<style scoped>
 .column-grid {
   display: grid;
   grid-template-columns: repeat(v-bind(board.columns.length), 1fr);

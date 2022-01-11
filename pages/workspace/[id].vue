@@ -56,6 +56,23 @@ export default {
 
         column.newItemName = ''
       }
+    },
+    migrateItem({ cardId, targetColumn, originalColumn }) {
+      // Step 1. Move item to new list
+      this.board.columns
+        .find(column => column.columnName === targetColumn)
+        .items.push(
+          this.board.columns
+            .find(column => column.columnName === originalColumn)
+            .items.find(item => item.id === cardId)
+        )
+
+      // Step 2. Delete item from old list
+      const parentColumn = this.board.columns.find(
+        column => column.columnName === originalColumn
+      )
+
+      parentColumn.items = parentColumn.items.filter(item => item.id !== cardId)
     }
   },
   mounted() {
@@ -109,6 +126,7 @@ export default {
                 :data="item"
                 :parentColumn="column.columnName"
                 :migrateList="board.columns"
+                @migrate-item="migrateItem"
               />
             </li>
           </ul>

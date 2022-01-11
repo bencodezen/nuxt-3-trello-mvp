@@ -16,16 +16,18 @@ const createWorkspace = () => {
 </script>
 
 <template>
-  <div>
+  <main class="main-content">
     <h1>Home Page</h1>
-    <h2>Recently Viewed</h2>
     <h2>Workspaces</h2>
     <input
       type="text"
       v-model="newWorkspaceName"
       @keyup.enter="createWorkspace"
+      style="width: 100%; padding: 5px; font-size: 1rem; margin-bottom: 10px"
     />
-    <button @click="createWorkspace">Create a Workspace</button>
+    <button @click="createWorkspace" style="padding: 7px 8px 5px">
+      Create a Workspace
+    </button>
     <ul class="workspace-list">
       <li
         v-for="workspace in workspaceList"
@@ -37,10 +39,18 @@ const createWorkspace = () => {
         >
       </li>
     </ul>
-  </div>
+  </main>
 </template>
 
 <style>
+.main-content {
+  padding: 30px;
+}
+
+.main-content h1 {
+  margin-top: 0;
+}
+
 .workspace-card {
   display: block;
   border: 2px solid #222;
@@ -52,5 +62,8 @@ const createWorkspace = () => {
 .workspace-list {
   margin-left: 0;
   padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
 }
 </style>

@@ -1,10 +1,11 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 
 const props = defineProps({
   data: Object,
   migrateList: Array,
-  parentColumn: String
+  parentColumn: String,
+  position: Object
 })
 
 const emits = defineEmits({
@@ -12,6 +13,7 @@ const emits = defineEmits({
 })
 
 const migrateListTarget = ref('')
+const initialX = ref(0)
 
 const filteredMigrateList = computed(() => {
   return props.migrateList.filter(
@@ -31,11 +33,28 @@ const migrateCard = () => {
     })
   }
 }
+
+onMounted(() => {
+  initialX.value = props.position.x
+})
+
+watchEffect(() => {
+  if (props.position.x - initialX.value > 250) {
+    console.log('hello')
+    emits('migrate-item', {
+      cardId: props.data.id,
+      targetColumn: 'Zorro',
+      originalColumn: props.parentColumn
+    })
+  }
+})
 </script>
 
 <template>
   <section class="base-card">
     <h4 style="margin-top: 0">{{ data.name }}</h4>
+    <p>Position: {{ position }}</p>
+    <p>Original Position: {{ initialX }}</p>
     <select
       name="luffy-migrate-list"
       id="luffy-migrate-list"

@@ -893,10 +893,34 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.26.tgz#7acd1621783571b9a82eca1f041b4a0a983481d9"
   integrity sha512-vPV6Cq+NIWbH5pZu+V+2QHE9y1qfuTq49uNWw4f7FDEeZaDU2H2cx5jcUZOAKW7qTrUS4k6qZPbMy1x4N96nbA==
 
+"@vueuse/components@^7.5.3":
+  version "7.5.3"
+  resolved "https://registry.yarnpkg.com/@vueuse/components/-/components-7.5.3.tgz#ec1eb2a764f1202831f7a6909df6538ff134a05e"
+  integrity sha512-skJRZmKOHgLWKYl+maAkuGZYhLYNtbUnS+utvMYGln+l6qKrHpzXGeyf4LA4Yg2Vk7kWEMzb7jsxpQqnLLm2eQ==
+  dependencies:
+    "@vueuse/core" "7.5.3"
+    "@vueuse/shared" "7.5.3"
+    vue-demi "*"
+
+"@vueuse/core@7.5.3", "@vueuse/core@^7.5.3":
+  version "7.5.3"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-7.5.3.tgz#7e8ea430a293670f12e5052a5285cb4ef8e9c758"
+  integrity sha512-D9j5ymHFMFRXQqCp0yZJkf/bvBGiz0MrKUa364p+L8dMyd5zyq2K1JmHyvoBd4xbTFRfmQ1h878u6YE5LCkDVQ==
+  dependencies:
+    "@vueuse/shared" "7.5.3"
+    vue-demi "*"
+
 "@vueuse/head@^0.7.4":
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.4.tgz#2eec185ebe52e634400dfe2a8b1a18f788c06bcf"
   integrity sha512-cmps+wrdgL77V72vtjU6kaAunkG6GhswaMIQoh7Twc52ql4/p7i1Amd31LqnnvNF/bfuvzcXgYvsH8I7kimZmA==
+
+"@vueuse/shared@7.5.3":
+  version "7.5.3"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-7.5.3.tgz#2a844f38e45b1002e14d8f0ab5b41221c4fb9b09"
+  integrity sha512-BJ71cxHN5VByW1S58Gl85NFJaQu93F7Vs7K/MuAKsIIuHm9PBbkR5Vxkg9ko9cBdiKVt+FNoo13BhdbA+Vwycg==
+  dependencies:
+    vue-demi "*"
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
@@ -5184,6 +5208,11 @@ vue-bundle-renderer@^0.3.4:
   integrity sha512-WKYTMMugT/rU5/CLOMGo2TIeYMY4hv8Z+s8PwK4BxgyFaj34pJ3V9zkEMwX8b9P7QSGjw+9zMRvbq6vtlGPnfA==
   dependencies:
     bundle-runner "^0.0.1"
+
+vue-demi@*:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.12.1.tgz#f7e18efbecffd11ab069d1472d7a06e319b4174c"
+  integrity sha512-QL3ny+wX8c6Xm1/EZylbgzdoDolye+VpCXRhI2hug9dJTP3OUJ3lmiKN3CsVV3mOJKwFi0nsstbgob0vG7aoIw==
 
 vue-loader@^17.0.0:
   version "17.0.0"

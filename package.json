@@ -8,5 +8,9 @@
   },
   "devDependencies": {
     "nuxt3": "latest"
+  },
+  "dependencies": {
+    "@vueuse/components": "^7.5.3",
+    "@vueuse/core": "^7.5.3"
   }
 }

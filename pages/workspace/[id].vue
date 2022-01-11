@@ -1,11 +1,15 @@
 <script>
 import { workspaceList } from '../../store/global.js'
+import { UseDraggable } from '@vueuse/components'
 
 export default {
   setup() {
     return {
       workspaceList
     }
+  },
+  components: {
+    UseDraggable
   },
   data: () => ({
     newColumnName: '',
@@ -122,12 +126,15 @@ export default {
               :key="item.id"
               style="list-style: none"
             >
-              <BaseCard
-                :data="item"
-                :parentColumn="column.columnName"
-                :migrateList="board.columns"
-                @migrate-item="migrateItem"
-              />
+              <UseDraggable :initialValue="{ x: 41, y: 10 }" v-slot="{ x, y }">
+                <BaseCard
+                  :data="item"
+                  :parentColumn="column.columnName"
+                  :migrateList="board.columns"
+                  @migrate-item="migrateItem"
+                  :position="{ x: x, y: y }"
+                />
+              </UseDraggable>
             </li>
           </ul>
         </section>
